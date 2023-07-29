@@ -1,3 +1,5 @@
+![alt text](https://github.com/steveleetn91/cordova-plugin-admob-free-2/demo.png?raw=true)
+
 # Cordova AdMob Plugin (iOS)
 
 This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support GoogleMobileAds SDK version `10.8.0` for iOS. And Android you need consider this link https://github.com/ratson/cordova-plugin-admob-free.
