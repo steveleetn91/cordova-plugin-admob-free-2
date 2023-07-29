@@ -1,4 +1,4 @@
-![alt text](https://github.com/steveleetn91/cordova-plugin-admob-free-2/demo.png?raw=true)
+![alt text](https://github.com/steveleetn91/cordova-plugin-admob-free-2/blob/dev/demo.png?raw=true)
 
 # Cordova AdMob Plugin (iOS)
 
