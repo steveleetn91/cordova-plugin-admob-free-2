@@ -16,7 +16,7 @@ This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support Goo
 
 Remove 
 
-    cordova plugin add cordova-plugin-admob-free-2 --save --variable ADMOB_APP_ID="<YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB>"    
+    cordova plugin remove cordova-plugin-admob-free-2 --save --variable ADMOB_APP_ID="<YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB>"    
 
 ## Config 
 
@@ -247,18 +247,19 @@ because project no select device for compile, don't worry you can open Project w
 
 ## How to use? 
 
-Example 
-    const x = (window.outerWidth - 320) / 2;
-    const y = window.outerHeight - 100;
-    const size = 2;
-    // size = 0 : 300x50
-    // size = 1 : 320x50
-    // size = 2 : 320x100
-    // size = 3 : 320x250
-    // size = 4 : 468x60
-    // size = 5 : 728x90
-    window.admob.iOS().banner.createBannerView("ca-app-pub-3940256099942544/2934735716",x,y, size)
-      .then(() => {
+Example: 
+
+                    const x = (window.outerWidth - 320) / 2;
+                    const y = window.outerHeight - 100;
+                    const size = 2;
+                    // size = 0 : 300x50
+                    // size = 1 : 320x50
+                    // size = 2 : 320x100
+                    // size = 3 : 320x250
+                    // size = 4 : 468x60
+                    // size = 5 : 728x90
+                    window.admob.iOS().banner.createBannerView("ca-app-pub-3940256099942544/2934735716",x,y, size)
+                    .then(() => {
                         window.admob.iOS().banner.loadAd().then(() => {
                             window.admob.iOS().banner.showAd().then(() => {
                                 console.log("Admob show");

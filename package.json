@@ -39,7 +39,9 @@
     "cordova-ios",
     "plugin",
     "google",
-    "admobpro"
+    "google-mobile-ads",
+    "ios-admob-sdk",
+    "stevelee"
   ],
   "tonicExampleFilename": "test.js",
   "author": "Stevelee",
