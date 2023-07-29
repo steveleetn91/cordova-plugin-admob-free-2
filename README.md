@@ -4,6 +4,10 @@ This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support Goo
 
 `Note :` This plugin developing but if you are urgent then you can use it if test is pass.
 
+## Required 
+
+ - NodeJS >= 19
+
 ## ADS SUPPORT 
 
   - Banner -> yes
@@ -12,7 +16,11 @@ This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support Goo
 
 ## How to install 
 
-    cordova plugin add https://github.com/steveleetn91/cordova-plugin-admob-free-2 --save --variable ADMOB_APP_ID="<YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB>"
+First step you need clone or download plugin after that run:
+
+    cordova plugin add path/to/plugin/cordova-plugin-admob-free-2 --save --variable ADMOB_APP_ID="<YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB>"
+
+change `path/to/plugin` by your path to plugin cloned or downloaded. If you have error "Error: undefined is not an object (evaluating 'window.admob.iOS')" maybe you will need reinstall `node_modules`, go to `./plugins/cordova-plugin-admob-free-2` and delete folder `./node_modules`, run `npm install && npm run build`.
 
 Remove 
 
