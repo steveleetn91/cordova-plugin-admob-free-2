@@ -23,7 +23,7 @@
                 self.rewardedAd = ad;
                 NSLog(@"Rewarded ad loaded.");
                 self.rewardedAd.fullScreenContentDelegate = self;
-                [self fireEvent:@"" event:@"admob.rewardVideo.events.LOAD" withData:nil];
+                [self fireEvent:@"" event:@"admob.rewardvideo.events.LOAD" withData:nil];
               }];
     }
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
@@ -36,15 +36,7 @@
     if (self.rewardedAd && [self.rewardedAd canPresentFromRootViewController:self.viewController error:nil]) {
 
       [self.rewardedAd presentFromRootViewController:self.viewController
-                            userDidEarnRewardHandler:^{
-                              GADAdReward *reward = self.rewardedAd.adReward;
-
-                              NSString *rewardMessage = [NSString
-                                  stringWithFormat:@"Reward received with currency %@ , amount %lf",
-                                                   reward.type, [reward.amount doubleValue]];
-                              NSLog(@"%@", rewardMessage);
-                              // Reward the user for watching the video.
-                            }];
+                            userDidEarnRewardHandler:nil];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
 
     } else {
@@ -69,19 +61,19 @@
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad
     didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
-    [self fireEvent:@"" event:@"admob.rewardVideo.events.LOAD_FAIL" withData:nil];
+    [self fireEvent:@"" event:@"admob.rewardvideo.events.LOAD_FAIL" withData:nil];
     NSLog(@"Ad did fail to present full screen content.");
 }
 
 /// Tells the delegate that the ad will present full screen content.
 - (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    [self fireEvent:@"" event:@"admob.rewardVideo.events.OPEN" withData:nil];
+    [self fireEvent:@"" event:@"admob.rewardvideo.events.OPEN" withData:nil];
     NSLog(@"Ad will present full screen content.");
 }
 
 /// Tells the delegate that the ad dismissed full screen content.
 - (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    [self fireEvent:@"" event:@"admob.rewardVideo.events.DID_DISMISS" withData:nil];
+    [self fireEvent:@"" event:@"admob.rewardvideo.events.DID_DISMISS" withData:nil];
     NSLog(@"Ad did dismiss full screen content.");
 }
 

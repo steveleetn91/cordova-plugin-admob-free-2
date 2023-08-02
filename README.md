@@ -290,10 +290,10 @@ because project no select device for compile, don't worry you can open Project w
 
 ### Example ReWard
 
-    window.admob.iOS().rewardVideo.createAd(UnitId);
+    window.admob.iOS().rewardvideo.createAd(UnitId);
 
-    document.addEventListener("admob.rewardVideo.events.LOAD",() => {
-        window.admob.iOS().rewardVideo.showAd();
+    document.addEventListener("admob.rewardvideo.events.LOAD",() => {
+        window.admob.iOS().rewardvideo.showAd();
     });
 
 
@@ -311,10 +311,10 @@ because project no select device for compile, don't worry you can open Project w
     - admob.banner.events.WILL_DISMISS
     - admob.banner.events.DISMISS
 
-    - admob.rewardVideo.events.LOAD
-    - admob.rewardVideo.events.OPEN
-    - admob.rewardVideo.events.LOAD_FAIL
-    - admob.rewardVideo.events.DID_DISMISS
+    - admob.rewardvideo.events.LOAD
+    - admob.rewardvideo.events.OPEN
+    - admob.rewardvideo.events.LOAD_FAIL
+    - admob.rewardvideo.events.DID_DISMISS
 
 ## Issue 
 
