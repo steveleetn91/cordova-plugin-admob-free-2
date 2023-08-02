@@ -72,14 +72,48 @@ class Banner {
   }
 
 }
-class Interstitial {
-  constructor() {
-
+class FullScreenAds {
+  adsCode = "";
+  class = "";
+  createAd( adsCode = "") {
+    this.adsCode = adsCode;
+    return new Promise((resolve,reject) => {
+      exec(() => {
+        console.log("Admob "+this.adsCode);
+        return resolve();
+      }, () => {
+        console.log("Admob "+this.adsCode+" fail");
+        return reject();
+      }, this.class, 'createAd', [{
+        adsCode : this.adsCode
+      }])
+    })
+  }
+  showAd( adsCode = "") {
+    this.adsCode = adsCode;
+    return new Promise((resolve,reject) => {
+      exec(() => {
+        console.log("Admob "+this.adsCode);
+        return resolve();
+      }, () => {
+        console.log("Admob "+this.adsCode+" fail");
+        return reject();
+      }, this.class, 'showAd', [{
+        adsCode : this.adsCode
+      }])
+    })
   }
 }
-class RewardVideo {
+class Interstitial extends FullScreenAds {
   constructor() {
-
+    super();
+    this.class = "CDVAdmobInterstitial";
+  }
+}
+class RewardVideo extends FullScreenAds {
+  constructor() {
+    super();
+    this.class = "CVDAdmobReward";
   }
 }
 

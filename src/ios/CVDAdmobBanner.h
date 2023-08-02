@@ -10,5 +10,5 @@
 - (void)hiddenAd:(CDVInvokedUrlCommand *)command;
 - (void)loadAd:(CDVInvokedUrlCommand *)command;
 - (void)destroyAd:(CDVInvokedUrlCommand *)command;
-
+- (void) fireEvent:(NSString *)obj event:(NSString *)eventName withData:(NSString *)jsonStr;
 @end

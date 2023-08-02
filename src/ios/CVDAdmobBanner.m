@@ -123,30 +123,52 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
 
+- (void) fireEvent:(NSString *)obj event:(NSString *)eventName withData:(NSString *)jsonStr {
+    NSString* js;
+    if(obj && [obj isEqualToString:@"window"]) {
+        js = [NSString stringWithFormat:@"var evt=document.createEvent(\"UIEvents\");evt.initUIEvent(\"%@\",true,false,window,0);window.dispatchEvent(evt);", eventName];
+    } else if(jsonStr && [jsonStr length]>0) {
+        js = [NSString stringWithFormat:@"javascript:cordova.fireDocumentEvent('%@',%@);", eventName, jsonStr];
+    } else {
+        js = [NSString stringWithFormat:@"javascript:cordova.fireDocumentEvent('%@');", eventName];
+    }
+    [self.commandDelegate evalJs:js];
+}
+
 #pragma mark GADBannerViewDelegate implementation
 
 - (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
+    [self fireEvent:@"" event:@"admob.banner.events.LOAD" withData:nil];
   NSLog(@"bannerViewDidReceiveAd");
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
+    [self fireEvent:@"" event:@"admob.banner.events.LOAD_FAIL" withData:nil];
   NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error localizedDescription]);
 }
 
 - (void)bannerViewDidRecordImpression:(GADBannerView *)bannerView {
+    [self fireEvent:@"" event:@"admob.banner.events.DID_RECORD" withData:nil];
   NSLog(@"bannerViewDidRecordImpression");
 }
 
 - (void)bannerViewWillPresentScreen:(GADBannerView *)bannerView {
+    [self fireEvent:@"" event:@"admob.banner.events.OPEN" withData:nil];
   NSLog(@"bannerViewWillPresentScreen");
 }
 
 - (void)bannerViewWillDismissScreen:(GADBannerView *)bannerView {
+    [self fireEvent:@"" event:@"admob.banner.events.WILL_DISMISS" withData:nil];
   NSLog(@"bannerViewWillDismissScreen");
 }
 
 - (void)bannerViewDidDismissScreen:(GADBannerView *)bannerView {
+    [self fireEvent:@"" event:@"admob.banner.events.DID_DISMISS" withData:nil];
   NSLog(@"bannerViewDidDismissScreen");
 }
+#pragma mark Cleanup
 
+- (void)dealloc {
+    self.bannerView = nil;
+}
 @end

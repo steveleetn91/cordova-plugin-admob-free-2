@@ -129,8 +129,6 @@
         <source-file src="src/ios/CVDAdmobReward.m" />
         <header-file src="src/ios/CVDAdmobInit.h" />
         <source-file src="src/ios/CVDAdmobInit.m" />
-        <header-file src="src/ios/GoogleMobileAdsConsentManager.h" />
-        <source-file src="src/ios/GoogleMobileAdsConsentManager.m" />
     </platform>
     
 </plugin>
