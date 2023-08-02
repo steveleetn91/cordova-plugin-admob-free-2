@@ -4,7 +4,6 @@
 
 This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support GoogleMobileAds SDK version `10.8.0` for iOS. And Android you need consider this link https://github.com/ratson/cordova-plugin-admob-free.
 
-`Note :` This plugin developing but if you are urgent then you can use it if test is pass.
 
 ## Required 
 
@@ -13,8 +12,8 @@ This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support Goo
 ## ADS SUPPORT 
 
   - Banner -> yes
-  - Interstilial -> not yet 
-  - Reward -> not yet 
+  - Interstilial -> yes
+  - Reward -> yes
 
 ## How to install 
 
@@ -249,6 +248,10 @@ First step your need add this into `config.xml` . You need consider this link fo
             <true /> 
         </edit-config>
 
+
+Sometime a some texteditor auto format will appears a some errors. If on that case you can consider google document for iOS version 10.8.0.
+
+
 ## Add SDK ( Simulator && Real Device )
 
 Default plugin support for simulator but if you need run on Real Device, so let's go to `./plugins/cordova-plugins-admob-free-2/plugin.xml` and comment all framework support for simulator and uncomment all framework support for Real Device ( I have comment at that, please check it ). After that you need reinstall iOS platform, maybe it'll apprear error
@@ -257,46 +260,61 @@ because project no select device for compile, don't worry you can open Project w
 
 ## How to use? 
 
-Example: 
+### Example Banner
 
-                    const x = (window.outerWidth - 320) / 2;
-                    const y = window.outerHeight - 100;
-                    const size = 2;
-                    // size = 0 : 300x50
-                    // size = 1 : 320x50
-                    // size = 2 : 320x100
-                    // size = 3 : 320x250
-                    // size = 4 : 468x60
-                    // size = 5 : 728x90
-                    window.admob.iOS().banner.createBannerView("ca-app-pub-3940256099942544/2934735716",x,y, size)
-                    .then(() => {
-                        window.admob.iOS().banner.loadAd().then(() => {
-                            window.admob.iOS().banner.showAd().then(() => {
-                                console.log("Admob show");
+    const x = (window.outerWidth - 320) / 2;
+    const y = window.outerHeight - 100;
+    const size = 2;
+    // size = 0 : 300x50
+    // size = 1 : 320x50
+    // size = 2 : 320x100
+    // size = 3 : 320x250
+    // size = 4 : 468x60
+    // size = 5 : 728x90
 
-                                setTimeout(() => {
-                                    window.admob.iOS().banner.hiddenAd().then(() => {
-                                        console.log("Admob hidden");
-                                    }).catch(() => {
-                                        console.log("Can not hidden banner");
-                                    });
+    admob.iOS().banner.createAd(UnitAdId, x,y,size)
+    .then(() => {
+        admob.iOS().banner.loadAd();
+    });
+    document.addEventListener("admob.banner.events.LOAD",() => {
+        console.log("ADS LOAD");
+        admob.iOS().banner.showAd();
+    })
+### Example Interstitial
 
-                                    window.admob.iOS().banner.destroyAd().then(() => {
-                                        console.log("Admob destroy");
-                                    }).catch(() => {
-                                        console.log("Can not destroy banner");
-                                    });
-                                }, 15000);
+    window.admob.iOS().interstitial.createAd(UnitId);
 
-                            }).catch(() => {
-                                console.log("Can not show banner");
-                            });
-                        }).catch(() => {
-                            console.log("Can not load banner");
-                        });
-                    }).catch(() => {
-                        console.log("Can not create banner");
-                    });
+    document.addEventListener("admob.interstitial.events.LOAD",() => {
+        window.admob.iOS().interstitial.showAd();
+    });
+
+### Example ReWard
+
+    window.admob.iOS().rewardVideo.createAd(UnitId);
+
+    document.addEventListener("admob.rewardVideo.events.LOAD",() => {
+        window.admob.iOS().rewardVideo.showAd();
+    });
+
+
+## Events 
+
+    - admob.interstitial.events.LOAD
+    - admob.interstitial.events.OPEN
+    - admob.interstitial.events.LOAD_FAIL
+    - admob.interstitial.events.DID_DISMISS
+
+    - admob.banner.events.LOAD
+    - admob.banner.events.OPEN
+    - admob.banner.events.LOAD_FAIL
+    - admob.banner.events.DID_RECORD
+    - admob.banner.events.WILL_DISMISS
+    - admob.banner.events.DISMISS
+
+    - admob.rewardVideo.events.LOAD
+    - admob.rewardVideo.events.OPEN
+    - admob.rewardVideo.events.LOAD_FAIL
+    - admob.rewardVideo.events.DID_DISMISS
 
 ## Issue 
 

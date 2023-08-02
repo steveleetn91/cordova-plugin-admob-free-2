@@ -39,10 +39,11 @@
                                        canPresentFromRootViewController:self.viewController
                                                                   error:nil]) {
                                  [self.interstitial presentFromRootViewController:self.viewController];
+                                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
                                } else {
                                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
                                }
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
 

@@ -31,7 +31,10 @@
 }
  
  -(void)showAd:(CDVInvokedUrlCommand *)command {
+    CDVPluginResult *pluginResult;
+    NSString *callbackId = command.callbackId;
     if (self.rewardedAd && [self.rewardedAd canPresentFromRootViewController:self.viewController error:nil]) {
+
       [self.rewardedAd presentFromRootViewController:self.viewController
                             userDidEarnRewardHandler:^{
                               GADAdReward *reward = self.rewardedAd.adReward;
@@ -42,7 +45,13 @@
                               NSLog(@"%@", rewardMessage);
                               // Reward the user for watching the video.
                             }];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
 - (void) fireEvent:(NSString *)obj event:(NSString *)eventName withData:(NSString *)jsonStr {
     NSString* js;
