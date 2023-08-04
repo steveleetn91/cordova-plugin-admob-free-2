@@ -1,5 +1,4 @@
-import exec from 'cordova/exec'
-
+const exec = cordova.exec;
 class FullScreenAds {
   adsCode = "";
   class = "";
