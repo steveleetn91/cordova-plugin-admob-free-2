@@ -21,7 +21,7 @@ First step you need clone or download plugin after that run:
 
     cordova plugin add path/to/plugin/cordova-plugin-admob-free-2 --save --variable ADMOB_APP_ID="<YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB>"
 
-change `path/to/plugin` by your path to plugin cloned or downloaded. If you have error "Error: undefined is not an object (evaluating 'window.admob.iOS')" maybe you will need reinstall `node_modules`, go to `./plugins/cordova-plugin-admob-free-2` and delete folder `./node_modules`, run `npm install && npm run build`.
+change `path/to/plugin` by your path to plugin cloned or downloaded. If you have error "Error: undefined is not an object (evaluating 'window.nuke_admob.iOS')" maybe you will need reinstall `node_modules`, go to `./plugins/cordova-plugin-admob-free-2` and delete folder `./node_modules`, run `npm install && npm run build`.
 
 Remove 
 
@@ -272,7 +272,7 @@ because project no select device for compile, don't worry you can open Project w
     // size = 4 : 468x60
     // size = 5 : 728x90
 
-    admob.ios.banner.createAd(UnitAdId, x,y,size)
+    window.nuke_admob.ios.banner.createAd(UnitAdId, x,y,size)
     .then(() => {
         admob.ios.banner.loadAd();
     });
@@ -293,7 +293,7 @@ because project no select device for compile, don't worry you can open Project w
     // size = 4 : 468x60
     // size = 5 : 728x90
 
-    admob.android.banner.createAd(UnitAdId, x,y,size)
+    window.nuke_admob.android.banner.createAd(UnitAdId, x,y,size)
     .then(() => {
         admob.android.banner.loadAd();
     });
@@ -305,34 +305,34 @@ because project no select device for compile, don't worry you can open Project w
 
 ### Example Interstitial iOS
 
-    window.admob.ios.interstitial.createAd(UnitId);
+    window.nuke_admob.ios.interstitial.createAd(UnitId);
 
     document.addEventListener("admob.interstitial.events.LOAD",() => {
-        window.admob.ios.interstitial.showAd();
+        window.nuke_admob.ios.interstitial.showAd();
     });
 
 ### Example Interstitial Android
 
-    window.admob.android.interstitial.createAd(UnitId);
+    window.nuke_admob.android.interstitial.createAd(UnitId);
 
     document.addEventListener("admob.interstitial.events.LOAD",() => {
-        window.admob.android.interstitial.showAd();
+        window.nuke_admob.android.interstitial.showAd();
     });
 
 ### Example ReWard iOS
 
-    window.admob.ios.rewardvideo.createAd(UnitId);
+    window.nuke_admob.ios.rewardvideo.createAd(UnitId);
 
     document.addEventListener("admob.rewardvideo.events.LOAD",() => {
-        window.admob.ios.rewardvideo.showAd();
+        window.nuke_admob.ios.rewardvideo.showAd();
     });
 
 ### Example ReWard Android
 
-    window.admob.android.rewardvideo.createAd(UnitId);
+    window.nuke_admob.android.rewardvideo.createAd(UnitId);
 
     document.addEventListener("admob.rewardvideo.events.LOAD",() => {
-        window.admob.android.rewardvideo.showAd();
+        window.nuke_admob.android.rewardvideo.showAd();
     });
 
 
