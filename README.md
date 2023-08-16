@@ -2,7 +2,7 @@
 
 # Cordova AdMob Plugin (iOS)
 
-This plugin reused  Android from [cordova-plugin-admob-free] plugin. Support GoogleMobileAds SDK version `10.8.0` for iOS. And Android you need consider this link https://github.com/ratson/cordova-plugin-admob-free.
+This plugin consider from [cordova-plugin-admob-free] plugin. Support GoogleMobileAds SDK version `10.8.0` for iOS and Android `22.2.0`.
 
 
 ## Required 
@@ -260,7 +260,7 @@ because project no select device for compile, don't worry you can open Project w
 
 ## How to use? 
 
-### Example Banner
+### Example Banner iOS
 
     const x = (window.outerWidth - 320) / 2;
     const y = window.outerHeight - 100;
@@ -272,32 +272,71 @@ because project no select device for compile, don't worry you can open Project w
     // size = 4 : 468x60
     // size = 5 : 728x90
 
-    admob.iOS().banner.createAd(UnitAdId, x,y,size)
+    admob.ios.banner.createAd(UnitAdId, x,y,size)
     .then(() => {
-        admob.iOS().banner.loadAd();
+        admob.ios.banner.loadAd();
     });
     document.addEventListener("admob.banner.events.LOAD",() => {
         console.log("ADS LOAD");
-        admob.iOS().banner.showAd();
+        admob.ios.banner.showAd();
     })
-### Example Interstitial
 
-    window.admob.iOS().interstitial.createAd(UnitId);
+### Example Banner Android
+
+    const x = (window.outerWidth - 320) / 2;
+    const y = window.outerHeight - 100;
+    const size = 2;
+    // size = 0 : 300x50
+    // size = 1 : 320x50
+    // size = 2 : 320x100
+    // size = 3 : 320x250
+    // size = 4 : 468x60
+    // size = 5 : 728x90
+
+    admob.android.banner.createAd(UnitAdId, x,y,size)
+    .then(() => {
+        admob.android.banner.loadAd();
+    });
+
+    document.addEventListener("admob.banner.events.LOAD",() => {
+        console.log("ADS LOAD");
+        admob.android.banner.showAd();
+    })    
+
+### Example Interstitial iOS
+
+    window.admob.ios.interstitial.createAd(UnitId);
 
     document.addEventListener("admob.interstitial.events.LOAD",() => {
-        window.admob.iOS().interstitial.showAd();
+        window.admob.ios.interstitial.showAd();
     });
 
-### Example ReWard
+### Example Interstitial Android
 
-    window.admob.iOS().rewardvideo.createAd(UnitId);
+    window.admob.android.interstitial.createAd(UnitId);
+
+    document.addEventListener("admob.interstitial.events.LOAD",() => {
+        window.admob.android.interstitial.showAd();
+    });
+
+### Example ReWard iOS
+
+    window.admob.ios.rewardvideo.createAd(UnitId);
 
     document.addEventListener("admob.rewardvideo.events.LOAD",() => {
-        window.admob.iOS().rewardvideo.showAd();
+        window.admob.ios.rewardvideo.showAd();
+    });
+
+### Example ReWard Android
+
+    window.admob.android.rewardvideo.createAd(UnitId);
+
+    document.addEventListener("admob.rewardvideo.events.LOAD",() => {
+        window.admob.android.rewardvideo.showAd();
     });
 
 
-## Events 
+## Events iOS
 
     - admob.interstitial.events.LOAD
     - admob.interstitial.events.OPEN
@@ -315,6 +354,29 @@ because project no select device for compile, don't worry you can open Project w
     - admob.rewardvideo.events.OPEN
     - admob.rewardvideo.events.LOAD_FAIL
     - admob.rewardvideo.events.DID_DISMISS
+
+## Events Android
+
+    - admob.interstitial.events.CLICK
+    - admob.interstitial.events.LOAD
+    - admob.interstitial.events.OPEN
+    - admob.interstitial.events.LOAD_FAIL
+    - admob.interstitial.events.DISMISS
+    - admob.interstitial.events.IMPRESSION
+
+    - admob.banner.events.CLICK
+    - admob.banner.events.LOAD
+    - admob.banner.events.OPEN
+    - admob.banner.events.LOAD_FAIL
+    - admob.banner.events.CLOSE
+    - admob.banner.events.IMPRESSION
+
+    - admob.rewardvideo.events.LOAD
+    - admob.rewardvideo.events.OPEN
+    - admob.rewardvideo.events.LOAD_FAIL
+    - admob.rewardvideo.events.IMPRESSION
+    - admob.rewardvideo.events.DISMISS
+    - admob.rewardvideo.events.CLICK
 
 ## Issue 
 
