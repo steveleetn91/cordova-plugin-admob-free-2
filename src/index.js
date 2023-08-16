@@ -13,7 +13,11 @@ export function android() {
 }
 const admob = {
     ios: iOS(),
-    android: android() 
+    android: android(),
+    test: () => {
+      console.log("run")
+    } 
 }
 window.nuke_admob = admob;
+window.admob = admob;
 export default admob;

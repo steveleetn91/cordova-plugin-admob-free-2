@@ -2,6 +2,9 @@ const exec = cordova.exec;
 class FullScreenAds {
   adsCode = "";
   class = "";
+  constructor(className = "") {
+    this.class = className;
+  }
   createAd( adsCode = "") {
     this.adsCode = adsCode;
     return new Promise((resolve,reject) => {
@@ -31,8 +34,7 @@ class FullScreenAds {
 
 class Banner extends FullScreenAds {
   constructor() {
-    super();
-    this.class = "CVDAdmobBanner";
+    super("CVDAdmobBanner");
     this.createAd = null;
     this.createAd = this.createBannerView;
   }
@@ -95,14 +97,12 @@ class Banner extends FullScreenAds {
 
 class Interstitial extends FullScreenAds {
   constructor() {
-    super();
-    this.class = "CDVAdmobInterstitial";
+    super("CDVAdmobInterstitial");
   }
 }
 class RewardVideo extends FullScreenAds {
   constructor() {
-    super();
-    this.class = "CVDAdmobReward";
+    super("CVDAdmobReward");
   }
 }
 

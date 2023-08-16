@@ -2,20 +2,17 @@ import { Banner, Interstitial, RewardVideo } from '../core/admobClass';
 
 class AndroidBanner extends Banner {
     constructor() {
-        super();
-        this.class = "AdmobBanner";
+        super("AdmobBanner");
     }
 }
 class AndroidInterstitial extends Interstitial {
     constructor() {
-        super();
-        this.class = "AdmobInterstitial";
+        super("AdmobInterstitial");
     }
 }
 class AndroidReward extends RewardVideo {
     constructor() {
-        super();
-        this.class = "AdmobReward";
+        super("AdmobReward");
     }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-admob-free-2"
     version="0.27.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
-    <name>Cordova AdMob Plugin</name>
+    <name>Cordova AdMob Plugin 2</name>
     <description>This plugin has extension Android platform from [cordova-plugin-admob-free] plugin. Support GoogleMobileAds SDK version 10.8.0 for iOS.
     And Android you need consider this link https://github.com/ratson/cordova-plugin-admob-free.
     </description>
@@ -18,10 +18,9 @@
         <engine name="cordova" version=">=4.0" />
     </engines>
     <dependency id="cordova-promise-polyfill" version="~0.0.2" />
-    <js-module name="AdMob" src="www/admob.js">
+    <js-module name="admob" src="www/admob.js">
             <clobbers target="admob" />
-            <clobbers target="AdMob" />
-            <clobbers target="plugins.AdMob" />
+            <clobbers target="plugins.admob" />
         </js-module>
     <platform name="android">
         <hook type="before_plugin_install" src="appAndroidBeforePluginInstall.sh" />

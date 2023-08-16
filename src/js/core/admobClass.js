@@ -1,10 +1,13 @@
 class FullScreenAds {
     adsCode = "";
     class = "";
+    constructor(className) {
+      this.class = className;
+    }
     createAd( adsCode = "") {
       this.adsCode = adsCode;
       return new Promise((resolve,reject) => {
-        exec(() => {
+        window.cordova.exec(() => {
           console.log("Admob "+this.adsCode);
           return resolve();
         }, () => {
@@ -17,7 +20,7 @@ class FullScreenAds {
     }
     showAd( ) {
       return new Promise((resolve,reject) => {
-        exec(() => {
+        window.cordova.exec(() => {
           console.log("Admob "+this.adsCode);
           return resolve();
         }, () => {
@@ -29,8 +32,8 @@ class FullScreenAds {
   }
 
   export  class Banner extends FullScreenAds {
-    constructor() {
-      super();
+    constructor(className="") {
+      super(className);
       //this.class = "CVDAdmobBanner";
       this.createAd = null;
       this.createAd = this.createBannerView;
@@ -39,7 +42,7 @@ class FullScreenAds {
     createBannerView(adsCode = "ca-app-pub-3940256099942544/2934735716",x = 0,y = 0,size = 0) {
       this.adsCode = adsCode;
       return new Promise((resolve,reject) => {
-        exec(() => {
+        window.cordova.exec(() => {
           console.log("Admob create banner");
           return resolve();
         }, () => {
@@ -56,7 +59,7 @@ class FullScreenAds {
   
     loadAd() {
       return new Promise((resolve,reject) => {
-        exec(() => {
+        window.cordova.exec(() => {
           console.log("Admob load banner");
           return resolve();
         }, () => {
@@ -68,7 +71,7 @@ class FullScreenAds {
   
     hiddenAd() {
       return new Promise((resolve,reject) => {
-        exec(() => {
+        window.cordova.exec(() => {
           console.log("Admob hidden banner");
           return resolve();
         }, () => {
@@ -80,7 +83,7 @@ class FullScreenAds {
   
     destroyAd() {
       return new Promise((resolve,reject) => {
-        exec(() => {
+        window.cordova.exec(() => {
           console.log("Admob destroy banner");
           return resolve();
         }, () => {
@@ -93,14 +96,14 @@ class FullScreenAds {
   }
   
   export  class Interstitial extends FullScreenAds {
-    constructor() {
-      super();
+    constructor(className="") {
+      super(className);
       //this.class = "CDVAdmobInterstitial";
     }
   }
 export  class RewardVideo extends FullScreenAds {
-    constructor() {
-      super();
+  constructor(className="") {
+    super(className);
       //this.class = "CVDAdmobReward";
     }
   }
